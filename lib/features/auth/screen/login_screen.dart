@@ -41,9 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('+88'),
-                  SizedBox(width: 20),
-                  TextField()
+
                 ],
               ),
             )
