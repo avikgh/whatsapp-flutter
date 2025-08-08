@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/common/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.childText, required this.onPressedButton});
+  const CustomButton(
+      {super.key, required this.childText, required this.onPressedButton});
 
   final String childText;
   final VoidCallback onPressedButton;
@@ -14,11 +15,12 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: tabColor,
         foregroundColor: blackColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5)
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       ),
-      child: Text(childText),
+      child: Text(
+        childText,
+        style: TextStyle(fontSize: 16),
+      ),
     );
   }
 }

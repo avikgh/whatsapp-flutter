@@ -9,9 +9,10 @@ class ErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(error, style: TextStyle(
-          color: blackColor
-        ),),
+        child: Text(
+          error,
+          style: TextStyle(color: blackColor),
+        ),
       ),
     );
   }

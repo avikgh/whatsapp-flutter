@@ -21,9 +21,7 @@ class LandingScreen extends StatelessWidget {
             const Text(
               'Welcome to WhatsApp',
               style: TextStyle(
-                  color: textColor,
-                  fontSize: 33,
-                  fontWeight: FontWeight.w600),
+                  color: textColor, fontSize: 33, fontWeight: FontWeight.w600),
             ),
             SizedBox(height: size.height / 9),
             Image.asset(
@@ -36,11 +34,8 @@ class LandingScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                  'Read our Privacy Policy. Tap "Agree and Continue" to agree the Terms and Service.',
-                style: TextStyle(
-                  color: greyColor,
-                  fontWeight: FontWeight.w400
-                ),
+                'Read our Privacy Policy. Tap "Agree and Continue" to agree the Terms and Service.',
+                style: TextStyle(color: greyColor, fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -52,7 +47,7 @@ class LandingScreen extends StatelessWidget {
                 childText: 'AGREE AND CONTINUE',
                 onPressedButton: () {
                   Navigator.pushNamed(context, LoginScreen.routeName);
-                }
+                },
               ),
             )
           ],
