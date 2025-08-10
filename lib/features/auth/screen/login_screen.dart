@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/common/utils/colors.dart';
 import 'package:whatsapp/common/widgets/custom_button.dart';
+import 'package:country_picker/country_picker.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login-screen';
@@ -12,11 +13,24 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _phoneTEController = TextEditingController();
+  Country? country;
 
   @override
   void dispose() {
     super.dispose();
     _phoneTEController.dispose();
+  }
+
+  void pickCountry() {
+    showCountryPicker(
+      context: context,
+      showPhoneCode: true,
+      onSelect: (Country _country) {
+        setState(() {
+          country = _country;
+        });
+      },
+    );
   }
 
   @override
@@ -28,48 +42,59 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: backgroundColor,
         title: Text('Enter your phone number'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 10),
-          const Text(
-            'Whatsapp will need to verify your number',
-            style: TextStyle(color: textColor),
-          ),
-          const SizedBox(height: 5),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Pick Country',
-              style: TextStyle(color: Colors.blue),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 10),
+            const Text(
+              'Whatsapp will need to verify your number',
+              style: TextStyle(color: textColor),
             ),
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(width: 10),
-                Text("+88"),
-                SizedBox(
-                  width: size.width * 0.7,
-                  child: TextField(
-                    controller: _phoneTEController,
-                    decoration: InputDecoration(hintText: 'phone number'),
-                  ),
-                )
-              ],
+            const SizedBox(height: 5),
+            TextButton(
+              onPressed: pickCountry,
+              child: Text(
+                'Pick Country',
+                style: TextStyle(color: Colors.blue),
+              ),
             ),
-          ),
-          SizedBox(height: size.height * 0.6),
-          SizedBox(
-            height: 50,
-            width: size.width * 0.3,
-            child: CustomButton(childText: 'NEXT', onPressedButton: () {}),
-          )
-        ],
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  if (country != null)
+                    Text(
+                      '+${country!.phoneCode}',
+                      style: TextStyle(color: textColor, fontSize: 16),
+                    ),
+                  const SizedBox(width: 5),
+                  SizedBox(
+                    width: size.width * 0.6,
+                    child: TextField(
+                      controller: _phoneTEController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(hintText: 'phone number'),
+                      style: TextStyle(
+                        color: textColor,
+                        fontSize: 16
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: size.height * 0.6),
+            SizedBox(
+              height: 50,
+              width: size.width * 0.3,
+              child: CustomButton(childText: 'NEXT', onPressedButton: () {}),
+            )
+          ],
+        ),
       ),
     );
   }

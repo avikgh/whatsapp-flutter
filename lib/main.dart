@@ -21,15 +21,17 @@ class WhatsApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme: AppBarTheme(
-              backgroundColor: appBarColor,
-              titleTextStyle: TextStyle(
-                  color: textColor, fontSize: 20, fontWeight: FontWeight.w600),
-              titleSpacing: 0),
-          iconButtonTheme: IconButtonThemeData(
-              style: IconButton.styleFrom(foregroundColor: textColor)),
-          inputDecorationTheme:
-              InputDecorationTheme(hintStyle: TextStyle(color: greyColor))),
+        appBarTheme: AppBarTheme(
+            backgroundColor: appBarColor,
+            titleTextStyle: TextStyle(
+                color: textColor, fontSize: 20, fontWeight: FontWeight.w600),
+            titleSpacing: 0),
+        iconButtonTheme: IconButtonThemeData(
+            style: IconButton.styleFrom(foregroundColor: textColor)),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: TextStyle(color: greyColor),
+        ),
+      ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: LandingScreen(),
     );
