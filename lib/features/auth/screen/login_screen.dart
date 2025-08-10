@@ -13,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _phoneTEController = TextEditingController();
-  Country? country;
+  Country? _country;
 
   @override
   void dispose() {
@@ -25,9 +25,9 @@ class _LoginScreenState extends State<LoginScreen> {
     showCountryPicker(
       context: context,
       showPhoneCode: true,
-      onSelect: (Country _country) {
+      onSelect: (Country country) {
         setState(() {
-          country = _country;
+          _country = country;
         });
       },
     );
@@ -66,9 +66,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  if (country != null)
+                  if (_country != null)
                     Text(
-                      '+${country!.phoneCode}',
+                      '+${_country!.phoneCode}',
                       style: TextStyle(color: textColor, fontSize: 16),
                     ),
                   const SizedBox(width: 5),
