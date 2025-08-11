@@ -6,7 +6,7 @@ import 'package:whatsapp/common/utils/snackbar.dart';
 import 'package:whatsapp/features/auth/screen/otp_screen.dart';
 
 final authRepositoryProvider = Provider((ref) {
-  AuthRepository(
+  return AuthRepository(
       auth: FirebaseAuth.instance, firestore: FirebaseFirestore.instance);
 });
 
