@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/utils/colors.dart';
 import 'package:whatsapp/features/landings/screens/landing_screen.dart';
 import 'package:whatsapp/router.dart';
@@ -10,7 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const WhatsApp());
+  runApp(const ProviderScope(child: WhatsApp()));
 }
 
 class WhatsApp extends StatelessWidget {
