@@ -8,10 +8,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case LoginScreen.routeName:
       return MaterialPageRoute(builder: (context) => LoginScreen());
     case OTPScreen.routeName:
-      final verificationId = settings.arguments as String;
-      return MaterialPageRoute(
-        builder: (context) => OTPScreen(verificationId: verificationId),
-      );
+      return MaterialPageRoute(builder: (context) => OTPScreen(),);
     default:
       return MaterialPageRoute(
         builder: (context) => ErrorScreen(
