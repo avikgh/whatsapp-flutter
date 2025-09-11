@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/utils/colors.dart';
 import 'package:whatsapp/common/widgets/custom_button.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:whatsapp/features/auth/screen/user_information_screen.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   static const String routeName = '/login-screen';
@@ -32,6 +33,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         });
       },
     );
+  }
+
+  void navigateToUserInfoScreen() {
+    Navigator.pushNamed(context, UserInformationScreen.routeName);
   }
 
   @override
@@ -94,7 +99,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               width: size.width * 0.3,
               child: CustomButton(
                 childText: 'NEXT',
-                onPressedButton: () {},
+                onPressedButton: navigateToUserInfoScreen,
               )
             )
           ],

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class OTPScreen extends StatefulWidget {
+  static const String routeName = '/otp-screen';
   const OTPScreen({super.key});
-
-  static const routeName = '/otp-screen';
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
