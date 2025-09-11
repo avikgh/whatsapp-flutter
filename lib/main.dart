@@ -21,20 +21,34 @@ class WhatsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-            backgroundColor: appBarColor,
-            titleTextStyle: TextStyle(
-                color: textColor, fontSize: 20, fontWeight: FontWeight.w600),
-            titleSpacing: 0),
-        iconButtonTheme: IconButtonThemeData(
-            style: IconButton.styleFrom(foregroundColor: textColor)),
-        inputDecorationTheme: InputDecorationTheme(
-          hintStyle: TextStyle(color: greyColor),
-        ),
-      ),
+      theme: _buildLightTheme(),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: LandingScreen(),
+    );
+  }
+
+  ThemeData _buildLightTheme() {
+    return ThemeData(
+      appBarTheme: AppBarTheme(
+          backgroundColor: appBarColor,
+          titleTextStyle: TextStyle(
+              color: textColor, fontSize: 20, fontWeight: FontWeight.w600),
+          titleSpacing: 0),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(foregroundColor: textColor),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: greyColor, fontWeight: FontWeight.w500),
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+      ),
     );
   }
 }

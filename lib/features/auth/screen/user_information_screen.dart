@@ -12,7 +12,7 @@ class UserInformationScreen extends StatefulWidget {
 }
 
 class _UserInformationScreenState extends State<UserInformationScreen> {
-
+  final TextEditingController _nameTEController = TextEditingController();
   File? image;
 
   void selectImage() async {
@@ -32,14 +32,16 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
               const SizedBox(height: 8),
               Stack(
                 children: [
-                  image == null ? CircleAvatar(
-                    backgroundImage: AssetImage('assets/profile_avatar.png'),
-                    radius: 60,
-                  ) :
-                  CircleAvatar(
-                    backgroundImage: FileImage(image!),
-                    radius: 60,
-                  ),
+                  image == null
+                      ? CircleAvatar(
+                          backgroundImage:
+                              AssetImage('assets/profile_avatar.png'),
+                          radius: 60,
+                        )
+                      : CircleAvatar(
+                          backgroundImage: FileImage(image!),
+                          radius: 60,
+                        ),
                   Positioned(
                     top: 80,
                     left: 75,
@@ -59,15 +61,15 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                     child: Container(
                       width: size.width * 0.75,
                       child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Enter Your Name'
-                        ),
+                        controller: _nameTEController,
+                        decoration:
+                            InputDecoration(hintText: 'Enter Your Name'),
                       ),
                     ),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.check,color: Colors.white, size: 25),
+                    icon: Icon(Icons.check, color: Colors.white, size: 25),
                   )
                 ],
               )
